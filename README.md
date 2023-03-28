@@ -9,5 +9,11 @@ Scrape Hong Kong Restaurant from Openrice website, ETL with MySQL database store
 
 
 2. Data Processing - MySQL stored procedure
-- Perform ETL in MySQL database to transform data format
+- Perform ETL in MySQL database to transform data format using Stored Procedure
 - Manage 1 to many relationship on restaurant to cusiine & dish by creating mapping table
+
+3. Data Analyse - Hong Kong Restaurants Exploration
+- Measuring Restaurants Popularity by Openrice Star number & Bookmark count to see what type of restaurant is most popular in HK using SQL
+
+Sample of output
+![image](https://user-images.githubusercontent.com/85422707/228155051-f5ed9bfe-74d5-47b6-8907-cc9b759b5272.png)
