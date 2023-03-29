@@ -17,3 +17,7 @@ Scrape Hong Kong Restaurant from Openrice website, ETL with MySQL database store
 
 Sample of output
 ![image](https://user-images.githubusercontent.com/85422707/228155051-f5ed9bfe-74d5-47b6-8907-cc9b759b5272.png)
+
+
+4. Predicting Popularity by ML
+Using number of Bookmark as indicator of popularity, predicting by differenct features from openrice using XG Boost
