@@ -1,26 +1,13 @@
-# OpenRice Web Scraping & Data Analysis
+# OpenRice Restaurant Scraper
 
 [![CI](https://github.com/Steven-YCH/Openrice_web_scrapping_and_data_analyse/actions/workflows/ci.yml/badge.svg)](https://github.com/Steven-YCH/Openrice_web_scrapping_and_data_analyse/actions/workflows/ci.yml)
 [![Python 3.10+](https://img.shields.io/badge/python-3.10%2B-blue.svg)](https://www.python.org/downloads/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
+Scrape Hong Kong restaurant listings from OpenRice public JSON APIs and save them as JSONL, CSV, or SQLite (Parquet optional).
 
-Portfolio project that collects Hong Kong restaurant listings from **OpenRice public JSON APIs**, stores them as portable files (JSONL / CSV / SQLite by default; Parquet optional), and keeps a small analysis starter. No MySQL passwords, no brittle HTML CSS selectors.
+## How it works
 
-> Educational / portfolio use only. Be polite to the site: rate-limit requests, keep demos small, and do not redistribute scraped data commercially.
-
-## Why JSON APIs instead of HTML scraping?
-
-The original notebooks fetched restaurant **HTML pages**, parsed them with BeautifulSoup selectors, and parallelized with threads. That approach:
-
-| HTML scrape (legacy) | JSON API (this rewrite) |
-| --- | --- |
-| Breaks when CSS / DOM changes | Stable field names (`poiId`, `name`, …) |
-| Heavy pages + fragile parsers | Compact JSON payloads |
-| Easy to overload the site with threads | Single session + configurable delay + retries |
-| Often paired with hardcoded DB credentials | Default to local JSONL/CSV; optional SQLite |
-
-OpenRice already exposes the same listing data the website uses:
+Instead of parsing HTML pages, this project calls the same JSON endpoints the website uses:
 
 1. **Metadata** — districts / regions  
    `GET https://www.openrice.com/api/v2/metadata/region/all?uiLang=zh&uiCity=hongkong`
@@ -28,22 +15,7 @@ OpenRice already exposes the same listing data the website uses:
    `GET https://www.openrice.com/api/v2/search?uiLang=zh&uiCity=hongkong&startAt=0&rows=N&districtId=XXXX`  
    Results live under `paginationResult.results[]`.
 
-## Architecture
-
-```mermaid
-flowchart LR
-  CLI["CLI / scripts"] --> Client["OpenRiceClient\nSession + retries + delay"]
-  Client --> MetaAPI["/api/v2/metadata/region/all"]
-  Client --> SearchAPI["/api/v2/search"]
-  MetaAPI --> Models["models.py parsers"]
-  SearchAPI --> Models
-  Models --> Storage["storage.py\nJSONL / CSV / SQLite / Parquet"]
-  Storage --> Disk["data/processed/"]
-```
-
-ASCII view:
-
-```
+```text
 cli.py ──► client.py ──► OpenRice JSON APIs
               │
               ▼
@@ -53,9 +25,11 @@ cli.py ──► client.py ──► OpenRice JSON APIs
          storage.py ──► data/processed/*.{jsonl,csv,sqlite} (+ optional parquet)
 ```
 
+Requests use a shared session with retries and a configurable delay between calls. Search results are deduplicated by `poiId`.
+
 ## Project layout
 
-```
+```text
 src/openrice_scraper/     # installable package
   client.py               # requests.Session, retries, delay
   metadata.py             # region/district fetch
@@ -63,12 +37,12 @@ src/openrice_scraper/     # installable package
   models.py               # dataclasses + parsers
   storage.py              # JSONL / CSV / SQLite / Parquet writers
   cli.py                  # console entrypoint
-scripts/scrape_sample.py  # one-liner demo scrape
-analysis/                 # lightweight summaries (notebook ideas, simplified)
+scripts/scrape_sample.py  # small demo scrape
+analysis/                 # lightweight summaries
 tests/                    # fixture-based unit tests (no network)
 fixtures/                 # sample search JSON for tests
-data/samples/             # legacy CSV/Parquet artifacts retained as samples
-archive/legacy/           # old notebooks / SQL / XGB (superseded)
+data/samples/             # sample CSV/Parquet extracts
+archive/legacy/           # older notebooks / SQL / ML materials
 ```
 
 ## Setup
@@ -79,13 +53,12 @@ python -m venv .venv
 # macOS/Linux: source .venv/bin/activate
 
 pip install -U pip
-# Core + tests only (recommended). Default outputs: JSONL / CSV / SQLite.
+# Core + tests (recommended). Default outputs: JSONL / CSV / SQLite.
 pip install -e ".[dev]"
-# Optional tabular helpers (still no pyarrow compile):
+# Optional tabular helpers:
 #   pip install -e ".[analysis]"
-# Optional Parquet only if a binary wheel exists for your Python:
+# Optional Parquet (needs a pyarrow wheel for your Python):
 #   pip install -e ".[parquet]"
-# or: pip install -r requirements.txt && pip install -e .
 ```
 
 Requires Python 3.10+.
@@ -100,7 +73,7 @@ python -m openrice_scraper.cli metadata
 openrice-scraper metadata --out data/processed/districts.jsonl
 ```
 
-### Scrape one district (demo-sized)
+### Scrape one district
 
 ```bash
 python -m openrice_scraper.cli scrape \
@@ -113,18 +86,18 @@ python -m openrice_scraper.cli scrape \
 Useful flags:
 
 - `--delay 1.0` — seconds between HTTP calls (default `1.0`)
-- `--max-pages 0` — no page cap (still be polite; prefer small demos)
-- `--out path.csv` / `.sqlite` — choose storage format; `.parquet` needs optional pandas+pyarrow wheels
+- `--max-pages 0` — no page cap
+- `--out path.csv` / `.sqlite` — choose storage format; `.parquet` needs optional pandas+pyarrow
 - `-v` — debug logging
 
-Shortcut demo script:
+Shortcut demo:
 
 ```bash
 python scripts/scrape_sample.py
 python analysis/summarize_sample.py data/processed/sample.jsonl
 ```
 
-### Tests (offline)
+### Tests
 
 ```bash
 pytest -q
@@ -135,7 +108,7 @@ pytest -q
 | Field | Source API key | Notes |
 | --- | --- | --- |
 | `poi_id` | `poiId` | Deduplication key |
-| `name` / `name_other_lang` | `name` / `nameOtherLang` | ZH / EN-ish labels |
+| `name` / `name_other_lang` | `name` / `nameOtherLang` | Chinese / other-language labels |
 | `address` / `address_other_lang` | `address` / `addressOtherLang` | |
 | `map_latitude` / `map_longitude` | `mapLatitude` / `mapLongitude` | |
 | `score_overall` | `scoreOverall` | Overall score |
@@ -153,17 +126,6 @@ Example JSONL line (truncated):
 {"poi_id": 123456, "name": "…", "district_id": 1001, "bookmarked_user_count": 1200, "categories": ["日本菜", "壽司/刺身"]}
 ```
 
-## Ethics & Terms of Use
-
-- This project is for **learning and portfolio demonstration**, not commercial data resale.
-- Respect OpenRice terms of service and robots / rate expectations: use a clear User-Agent, keep `--delay` ≥ 1s for demos, and cap `--rows` / `--max-pages`.
-- Do **not** hardcode or commit database passwords. This rewrite defaults to local files; SQLite is optional and credential-free.
-- Scraped content remains subject to OpenRice rights — do not republish bulk dumps.
-
 ## Legacy materials
 
-Older notebooks (HTML + threads + MySQL), SQL ETL, Excel reports, and an XGBoost model JSON are under [`archive/legacy/`](archive/legacy/). Sample historical extracts live in [`data/samples/`](data/samples/). See [`archive/legacy/README.md`](archive/legacy/README.md).
-
-## License
-
-MIT — see [LICENSE](LICENSE).
+Older notebooks, SQL ETL, Excel reports, and an XGBoost model JSON are under [`archive/legacy/`](archive/legacy/). Sample historical extracts live in [`data/samples/`](data/samples/).

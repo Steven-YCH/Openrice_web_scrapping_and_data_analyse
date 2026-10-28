@@ -1,3 +1,3 @@
-"""OpenRice public JSON API scraper for portfolio / educational use."""
+"""OpenRice public JSON API scraper."""
 
 __version__ = "0.1.0"

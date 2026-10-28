@@ -16,8 +16,8 @@ DEFAULT_DELAY_SECONDS = 1.0
 DEFAULT_MAX_RETRIES = 3
 DEFAULT_TIMEOUT_SECONDS = 30.0
 DEFAULT_USER_AGENT = (
-    "OpenRicePortfolioScraper/0.1 (+https://github.com/Steven-YCH/"
-    "Openrice_web_scrapping_and_data_analyse; educational/portfolio use)"
+    "OpenRiceScraper/0.1 (+https://github.com/Steven-YCH/"
+    "Openrice_web_scrapping_and_data_analyse)"
 )
 
 

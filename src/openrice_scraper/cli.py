@@ -18,10 +18,7 @@ from .storage import write_records
 def build_parser() -> argparse.ArgumentParser:
     parser = argparse.ArgumentParser(
         prog="openrice-scraper",
-        description=(
-            "Scrape Hong Kong restaurant listings from OpenRice public JSON APIs "
-            "(portfolio / educational use)."
-        ),
+        description="Scrape Hong Kong restaurant listings from OpenRice public JSON APIs",
     )
     parser.add_argument("--version", action="version", version=f"%(prog)s {__version__}")
     parser.add_argument(
