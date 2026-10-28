@@ -1,0 +1,132 @@
+{
+  "paginationResult": {
+    "results": [
+      {
+        "poiId": 536198,
+        "name": "鮨政",
+        "nameOtherLang": "Sushi Masa",
+        "address": "蘇杭街105號地舖",
+        "addressOtherLang": "G/F, 105 Jervois Street",
+        "mapLatitude": 22.2856442,
+        "mapLongitude": 114.15039879999995,
+        "scoreOverall": 4.591653,
+        "bookmarkedUserCount": 16976,
+        "photoCount": 5473,
+        "reviewCount": 625,
+        "scoreSmile": 586,
+        "scoreCry": 9,
+        "priceRangeId": 3,
+        "district": {
+          "searchKey": "districtId=1001",
+          "districtId": 1001,
+          "name": "上環",
+          "callName": "上環",
+          "regionId": 0
+        },
+        "categories": [
+          {
+            "searchKey": "cuisineId=2009",
+            "categoryId": 2009,
+            "categoryTypeId": 1,
+            "name": "日本菜",
+            "callName": "日本菜",
+            "codeTablePhoto": {
+              "url": "https://static8.orstatic.com/userphoto/codetablephoto/0/1A/000987DE5A6401D85909E0mx.jpg",
+              "urls": {
+                "full": "https://static8.orstatic.com/userphoto/codetablephoto/0/1A/000987DE5A6401D85909E0lv.jpg",
+                "standard": "https://static8.orstatic.com/userphoto/codetablephoto/0/1A/000987DE5A6401D85909E0mx.jpg",
+                "thumbnail": "https://static8.orstatic.com/userphoto/codetablephoto/0/1A/000987DE5A6401D85909E0sx.jpg",
+                "icon": "https://static8.orstatic.com/userphoto/codetablephoto/0/1A/000987DE5A6401D85909E0tx.jpg"
+              },
+              "photoId": 11959,
+              "allowCallSr2Detail": false
+            }
+          },
+          {
+            "searchKey": "dishId=1034",
+            "categoryId": 1034,
+            "categoryTypeId": 2,
+            "name": "壽司/刺身",
+            "callName": "壽司-刺身",
+            "codeTablePhoto": {
+              "url": "https://static6.orstatic.com/userphoto/codetablephoto/0/1A/00098D8FAE9D2A4E7A98C6mx.jpg",
+              "urls": {
+                "full": "https://static6.orstatic.com/userphoto/codetablephoto/0/1A/00098D8FAE9D2A4E7A98C6lv.jpg",
+                "standard": "https://static6.orstatic.com/userphoto/codetablephoto/0/1A/00098D8FAE9D2A4E7A98C6mx.jpg",
+                "thumbnail": "https://static6.orstatic.com/userphoto/codetablephoto/0/1A/00098D8FAE9D2A4E7A98C6sx.jpg",
+                "icon": "https://static6.orstatic.com/userphoto/codetablephoto/0/1A/00098D8FAE9D2A4E7A98C6tx.jpg"
+              },
+              "photoId": 11965,
+              "allowCallSr2Detail": false
+            }
+          }
+        ],
+        "shortenUrl": "https://s.openrice.com/QrbS0XYu800"
+      },
+      {
+        "poiId": 149893,
+        "name": "Green Orange",
+        "nameOtherLang": "",
+        "address": "永樂街50號昌盛大廈2樓",
+        "addressOtherLang": "2/F, CS Tower, 50 Wing Lok Street",
+        "mapLatitude": 22.2863217,
+        "mapLongitude": 114.1517794,
+        "scoreOverall": 4.42713,
+        "bookmarkedUserCount": 55208,
+        "photoCount": 14048,
+        "reviewCount": 1436,
+        "scoreSmile": 1289,
+        "scoreCry": 35,
+        "priceRangeId": 4,
+        "district": {
+          "searchKey": "districtId=1001",
+          "districtId": 1001,
+          "name": "上環",
+          "callName": "上環",
+          "regionId": 0
+        },
+        "categories": [
+          {
+            "searchKey": "cuisineId=3006",
+            "categoryId": 3006,
+            "categoryTypeId": 1,
+            "name": "意大利菜",
+            "callName": "意大利菜",
+            "codeTablePhoto": {
+              "url": "https://static7.orstatic.com/userphoto/codetablephoto/0/0/00001EEABB678570CD7ABCmx.jpg",
+              "urls": {
+                "full": "https://static7.orstatic.com/userphoto/codetablephoto/0/0/00001EEABB678570CD7ABClv.jpg",
+                "standard": "https://static7.orstatic.com/userphoto/codetablephoto/0/0/00001EEABB678570CD7ABCmx.jpg",
+                "thumbnail": "https://static7.orstatic.com/userphoto/codetablephoto/0/0/00001EEABB678570CD7ABCsx.jpg",
+                "icon": "https://static7.orstatic.com/userphoto/codetablephoto/0/0/00001EEABB678570CD7ABCtx.jpg"
+              },
+              "photoId": 50,
+              "allowCallSr2Detail": false
+            }
+          },
+          {
+            "searchKey": "cuisineId=4000",
+            "categoryId": 4000,
+            "categoryTypeId": 1,
+            "name": "西式",
+            "callName": "西式",
+            "codeTablePhoto": {
+              "url": "https://static7.orstatic.com/userphoto/codetablephoto/0/1A/00098IB469A1AAEAEFEF7Fmx.jpg",
+              "urls": {
+                "full": "https://static7.orstatic.com/userphoto/codetablephoto/0/1A/00098IB469A1AAEAEFEF7Flv.jpg",
+                "standard": "https://static7.orstatic.com/userphoto/codetablephoto/0/1A/00098IB469A1AAEAEFEF7Fmx.jpg",
+                "thumbnail": "https://static7.orstatic.com/userphoto/codetablephoto/0/1A/00098IB469A1AAEAEFEF7Fsx.jpg",
+                "icon": "https://static7.orstatic.com/userphoto/codetablephoto/0/1A/00098IB469A1AAEAEFEF7Ftx.jpg"
+              },
+              "photoId": 11970,
+              "allowCallSr2Detail": false
+            }
+          }
+        ],
+        "shortenUrl": "https://s.openrice.com/QrbS0XKa200"
+      }
+    ],
+    "count": 564,
+    "totalReturnCount": 250
+  }
+}

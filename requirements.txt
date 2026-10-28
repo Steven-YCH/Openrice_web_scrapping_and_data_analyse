@@ -1,0 +1,11 @@
+# Core scraper
+requests==2.32.3
+urllib3==2.2.3
+
+# Dev / tests
+pytest==8.3.3
+
+# Optional analysis / parquet export (install separately if needed)
+# pandas>=2.0
+# pyarrow>=14
+# Note: on very new Python versions, use wheels that support your interpreter.
