@@ -1,5 +1,10 @@
 # OpenRice Web Scraping & Data Analysis
 
+[![CI](https://github.com/Steven-YCH/Openrice_web_scrapping_and_data_analyse/actions/workflows/ci.yml/badge.svg)](https://github.com/Steven-YCH/Openrice_web_scrapping_and_data_analyse/actions/workflows/ci.yml)
+[![Python 3.10+](https://img.shields.io/badge/python-3.10%2B-blue.svg)](https://www.python.org/downloads/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+
+
 Portfolio project that collects Hong Kong restaurant listings from **OpenRice public JSON APIs**, stores them as portable files (JSONL / CSV / SQLite by default; Parquet optional), and keeps a small analysis starter. No MySQL passwords, no brittle HTML CSS selectors.
 
 > Educational / portfolio use only. Be polite to the site: rate-limit requests, keep demos small, and do not redistribute scraped data commercially.
