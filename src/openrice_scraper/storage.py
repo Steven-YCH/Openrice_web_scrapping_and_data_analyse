@@ -103,7 +103,9 @@ def _write_parquet(records: Sequence[dict[str, Any]], path: Path) -> None:
     except ImportError as exc:  # pragma: no cover - optional dependency path
         raise ImportError(
             "Writing parquet requires pandas (and a parquet engine). "
-            "Install with: pip install pandas pyarrow"
+            "Default formats are JSONL/CSV/SQLite. For Parquet, install pandas "
+            "plus a pyarrow binary wheel (avoid source builds on unsupported Pythons) "
+            "via: pip install -e '.[parquet]'"
         ) from exc
 
     flat = [_flatten_for_tabular(row) for row in records]

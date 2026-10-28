@@ -13,13 +13,18 @@ authors = [{ name = "Steven-YCH" }]
 keywords = ["openrice", "scraper", "hong-kong", "restaurants", "portfolio"]
 dependencies = [
     "requests>=2.31,<3",
-    "urllib3>=2.0,<3",
 ]
 
 [project.optional-dependencies]
+# Lightweight helpers only. Do NOT pull pyarrow here - source builds fail/slow on new Pythons.
 analysis = [
     "pandas>=2.0,<3",
-    "pyarrow>=14,<20",
+]
+# Install only if you need Parquet AND a binary wheel exists for your Python:
+#   pip install "openrice-scraper[parquet]"
+parquet = [
+    "pandas>=2.0,<3",
+    "pyarrow>=14,<20; python_version < '3.14'",
 ]
 dev = [
     "pytest>=7.4,<9",

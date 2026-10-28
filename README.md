@@ -1,6 +1,6 @@
 # OpenRice Web Scraping & Data Analysis
 
-Portfolio project that collects Hong Kong restaurant listings from **OpenRice public JSON APIs**, stores them as portable files (JSONL / CSV / SQLite / Parquet), and keeps a small analysis starter. No MySQL passwords, no brittle HTML CSS selectors.
+Portfolio project that collects Hong Kong restaurant listings from **OpenRice public JSON APIs**, stores them as portable files (JSONL / CSV / SQLite by default; Parquet optional), and keeps a small analysis starter. No MySQL passwords, no brittle HTML CSS selectors.
 
 > Educational / portfolio use only. Be polite to the site: rate-limit requests, keep demos small, and do not redistribute scraped data commercially.
 
@@ -45,7 +45,7 @@ cli.py ──► client.py ──► OpenRice JSON APIs
          models.py (Restaurant, DistrictMeta)
               │
               ▼
-         storage.py ──► data/processed/*.{jsonl,csv,sqlite,parquet}
+         storage.py ──► data/processed/*.{jsonl,csv,sqlite} (+ optional parquet)
 ```
 
 ## Project layout
@@ -74,7 +74,12 @@ python -m venv .venv
 # macOS/Linux: source .venv/bin/activate
 
 pip install -U pip
-pip install -e ".[dev,analysis]"
+# Core + tests only (recommended). Default outputs: JSONL / CSV / SQLite.
+pip install -e ".[dev]"
+# Optional tabular helpers (still no pyarrow compile):
+#   pip install -e ".[analysis]"
+# Optional Parquet only if a binary wheel exists for your Python:
+#   pip install -e ".[parquet]"
 # or: pip install -r requirements.txt && pip install -e .
 ```
 
@@ -104,7 +109,7 @@ Useful flags:
 
 - `--delay 1.0` — seconds between HTTP calls (default `1.0`)
 - `--max-pages 0` — no page cap (still be polite; prefer small demos)
-- `--out path.csv` / `.sqlite` / `.parquet` — choose storage format
+- `--out path.csv` / `.sqlite` — choose storage format; `.parquet` needs optional pandas+pyarrow wheels
 - `-v` — debug logging
 
 Shortcut demo script:

@@ -1,11 +1,13 @@
-# Core scraper
+# Core scraper (default)
 requests==2.32.3
-urllib3==2.2.3
 
 # Dev / tests
 pytest==8.3.3
 
-# Optional analysis / parquet export (install separately if needed)
-# pandas>=2.0
-# pyarrow>=14
-# Note: on very new Python versions, use wheels that support your interpreter.
+# Optional: tabular analysis helpers (JSONL/CSV only — no compile step)
+# pandas>=2.0,<3
+
+# Optional: Parquet export — install ONLY when a binary wheel exists for your Python.
+# Do NOT force a source build of pyarrow on bleeding-edge interpreters (e.g. 3.14).
+# pandas>=2.0,<3
+# pyarrow>=14,<20
