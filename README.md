@@ -1,6 +1,5 @@
 # OpenRice Restaurant Scraper
 
-[![CI](https://github.com/Steven-YCH/Openrice_web_scrapping_and_data_analyse/actions/workflows/ci.yml/badge.svg)](https://github.com/Steven-YCH/Openrice_web_scrapping_and_data_analyse/actions/workflows/ci.yml)
 [![Python 3.10+](https://img.shields.io/badge/python-3.10%2B-blue.svg)](https://www.python.org/downloads/)
 
 Scrape Hong Kong restaurant listings from OpenRice public JSON APIs and save them as JSONL, CSV, or SQLite (Parquet optional).
